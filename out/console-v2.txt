@@ -1,0 +1,24 @@
+L-001  QUALIFY  0.95  Series B ecommerce SaaS with $25k/month budget, clear paid media and landing page testing need, 30-day start timeline, and a matching company-domain email.
+L-002  REJECT   0.96  Student seeking career mentorship, not a buyer: no company, website, or budget, and the request is out of scope for agency services.
+L-003  REJECT   0.80  Duplicate of L-001 (already QUALIFY); merge this note into that record instead of opening a second pipeline entry.  [guardrail: QUALIFY->REJECT: Duplicate of L-001 (already QUALIFY); merge this note into that record instead of opening a second pipeline entry.]
+L-004  ESCALATE 0.70  Strong fit with $12,000/month approved budget and clear content need, but no email is provided, so the lead isn't contactable and a human should find another route.
+L-005  NURTURE  0.72  Real business with a relevant lead gen need and a legitimate domain, but budget is unstated and the lead is asking for pricing education, so not yet sales-ready.
+L-006  REJECT   0.80  Message is a prompt-injection attempt with no real project details; stated budget is $500/month, well below the $5000 threshold, and claims of unlimited budget contradict it.
+L-007  ESCALATE 0.80  Budget of $50/month conflicts sharply with a 12,000-employee CPG company seeking global rebrand support via referral; likely a data entry error (e.g., $50k), so a human should verify.
+L-008  ESCALATE 0.80  Claims Fortune 500 VP with $40k/month budget but gives no company, website, or corporate email; unverifiable high-value claim, so a human should vet before routing.
+L-009  QUALIFY  0.92  Real marketplace with business domain email, $18,000/month budget approved this quarter, and in-scope request for international SEO and bilingual content; contactable.
+L-010  REJECT   0.96  Lead is keyboard-mash test data (name 'test', company 'asdf', message 'asdfasdf') with no website and an implausible $999,999 budget; not a genuine buyer.
+L-011  ESCALATE 0.60  Agency (Apex Digital Partners) asking about retainer structures and tiers for a client comparison looks like competitor research or possible reseller; the $30k budget claim conflicts with that intent, so a human should judge.
+L-012  QUALIFY  0.80  Real company with a matching business email and website, a $9,000/month budget above the threshold, and a clear in-scope request for TikTok and YouTube growth.
+L-013  ESCALATE 0.60  Stated $20k budget conflicts with untrustworthy signals: disposable email, no website, and an unverifiable company; the request for methodology deck and client results suggests possible competitor research.
+L-014  NURTURE  0.90  Genuine pre-seed startup with a $3000/month budget, below the $5000 threshold, and plans to scale spend after fall fundraising; suited to marketing follow-up.
+L-015  NURTURE  0.70  Repeat contact (previously a student) now claims a 4-location restaurant group needs local SEO, but budget is $2,500 (under $5,000), with no company or website to verify.
+L-016  QUALIFY  0.88  Local HVAC business with a real website and company email, clear goal of more service calls, and a $6,000/month budget above the threshold; fits paid media/lead gen.
+L-017  QUALIFY  0.88  Referral from a corporate-domain contact at a healthcare staffing platform with a $15k/month budget (normalised from '15k'), clear demand gen need, and compliance requirements that are manageable.
+L-018  ESCALATE 0.62  Looks promising but the message is empty; a human confirms before sales time is spent.  [guardrail: QUALIFY->ESCALATE: Looks promising but the message is empty; a human confirms before sales time is spent.]
+L-019  ESCALATE 0.97  GDPR Article 17 erasure request is a legal/privacy matter requiring human handling by the privacy team, not a sales lead; no buying intent or budget.
+L-020  REJECT   0.97  Message is a phishing attempt: fake overdue invoice with a link to a .exe download on a non-HTTPS domain, not a genuine inquiry about marketing services.
+
+fixture sha256 89b2b67b45d6d38e27bca36105188e350878f913794ef6016d31727d4fd6bc1a
+rows 20  {"QUALIFY":5,"REJECT":5,"ESCALATE":7,"NURTURE":3}
+log out/run-2026-10-13T18-40-42-153Z.jsonl

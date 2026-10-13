@@ -1,0 +1,207 @@
+{
+  "run_id": "2026-10-13T18-40-42-153Z",
+  "fixture_sha256": "89b2b67b45d6d38e27bca36105188e350878f913794ef6016d31727d4fd6bc1a",
+  "model": "sonnet",
+  "decisions": [
+    {
+      "lead_id": "L-001",
+      "decision": "QUALIFY",
+      "reason": "Series B ecommerce SaaS with $25k/month budget, clear paid media and landing page testing need, 30-day start timeline, and a matching company-domain email.",
+      "confidence": 0.95,
+      "duplicate_of": "",
+      "flags": "",
+      "guardrail_overrides": "",
+      "llm_notes": "No flags, no injection attempts. Route to sales promptly given the 30-day start window."
+    },
+    {
+      "lead_id": "L-002",
+      "decision": "REJECT",
+      "reason": "Student seeking career mentorship, not a buyer: no company, website, or budget, and the request is out of scope for agency services.",
+      "confidence": 0.96,
+      "duplicate_of": "",
+      "flags": "missing_company;missing_website",
+      "guardrail_overrides": "",
+      "llm_notes": "Genuine, harmless request, not spam. Optionally send a polite note pointing to Single Grain's blog or podcast resources."
+    },
+    {
+      "lead_id": "L-003",
+      "decision": "REJECT",
+      "reason": "Duplicate of L-001 (already QUALIFY); merge this note into that record instead of opening a second pipeline entry.",
+      "confidence": 0.8,
+      "duplicate_of": "L-001",
+      "flags": "repeat_contact_of_L-001",
+      "guardrail_overrides": "QUALIFY->REJECT: Duplicate of L-001 (already QUALIFY); merge this note into that record instead of opening a second pipeline entry.",
+      "llm_notes": "Duplicate of L-001 (repeat contact). Merge with the existing sales opportunity and route to the same rep rather than creating a new deal. Add SEO interest to the record."
+    },
+    {
+      "lead_id": "L-004",
+      "decision": "ESCALATE",
+      "reason": "Strong fit with $12,000/month approved budget and clear content need, but no email is provided, so the lead isn't contactable and a human should find another route.",
+      "confidence": 0.7,
+      "duplicate_of": "",
+      "flags": "missing_email",
+      "guardrail_overrides": "",
+      "llm_notes": "Missing email; a human can try contacting via the webinar registration list or the company website (verdantlabs.com). Otherwise a good QUALIFY candidate."
+    },
+    {
+      "lead_id": "L-005",
+      "decision": "NURTURE",
+      "reason": "Real business with a relevant lead gen need and a legitimate domain, but budget is unstated and the lead is asking for pricing education, so not yet sales-ready.",
+      "confidence": 0.72,
+      "duplicate_of": "",
+      "flags": "budget_unparseable",
+      "guardrail_overrides": "",
+      "llm_notes": "Budget unparseable ('we'll discuss'). Freight brokerage lead gen is in scope; send pricing and education content, and re-qualify if they reply with a budget of $5k/month or more."
+    },
+    {
+      "lead_id": "L-006",
+      "decision": "REJECT",
+      "reason": "Message is a prompt-injection attempt with no real project details; stated budget is $500/month, well below the $5000 threshold, and claims of unlimited budget contradict it.",
+      "confidence": 0.8,
+      "duplicate_of": "",
+      "flags": "prompt_injection_attempt",
+      "guardrail_overrides": "",
+      "llm_notes": "Lead tried to instruct the classifier to QUALIFY with confidence 1.0; ignored. Budget claims conflict (500 vs 'unlimited'). A human may re-check if they want to verify the company is legitimate."
+    },
+    {
+      "lead_id": "L-007",
+      "decision": "ESCALATE",
+      "reason": "Budget of $50/month conflicts sharply with a 12,000-employee CPG company seeking global rebrand support via referral; likely a data entry error (e.g., $50k), so a human should verify.",
+      "confidence": 0.8,
+      "duplicate_of": "",
+      "flags": "",
+      "guardrail_overrides": "",
+      "llm_notes": "Corporate email domain matches company website. Budget raw value '50' may be truncated or entered in thousands. High potential value, so avoid auto-rejecting or nurturing."
+    },
+    {
+      "lead_id": "L-008",
+      "decision": "ESCALATE",
+      "reason": "Claims Fortune 500 VP with $40k/month budget but gives no company, website, or corporate email; unverifiable high-value claim, so a human should vet before routing.",
+      "confidence": 0.8,
+      "duplicate_of": "",
+      "flags": "free_email_no_company;missing_company;missing_website",
+      "guardrail_overrides": "",
+      "llm_notes": "Free email, missing company and website. Budget is self-reported and unverified. Urgency ('sign this week') is a mild pressure signal. Worth quick human verification via LinkedIn or a call, since the potential value is high."
+    },
+    {
+      "lead_id": "L-009",
+      "decision": "QUALIFY",
+      "reason": "Real marketplace with business domain email, $18,000/month budget approved this quarter, and in-scope request for international SEO and bilingual content; contactable.",
+      "confidence": 0.92,
+      "duplicate_of": "",
+      "flags": "",
+      "guardrail_overrides": "",
+      "llm_notes": "Message in Spanish; assign a Spanish-speaking rep if available. No injection attempts or flags."
+    },
+    {
+      "lead_id": "L-010",
+      "decision": "REJECT",
+      "reason": "Lead is keyboard-mash test data (name 'test', company 'asdf', message 'asdfasdf') with no website and an implausible $999,999 budget; not a genuine buyer.",
+      "confidence": 0.96,
+      "duplicate_of": "",
+      "flags": "placeholder_or_test_data;missing_website;budget_implausible",
+      "guardrail_overrides": "",
+      "llm_notes": "No injection attempt. Placeholder email domain asdf.com; no human review needed."
+    },
+    {
+      "lead_id": "L-011",
+      "decision": "ESCALATE",
+      "reason": "Agency (Apex Digital Partners) asking about retainer structures and tiers for a client comparison looks like competitor research or possible reseller; the $30k budget claim conflicts with that intent, so a human should judge.",
+      "confidence": 0.6,
+      "duplicate_of": "",
+      "flags": "",
+      "guardrail_overrides": "",
+      "llm_notes": "Budget likely not their own; they're gathering pricing info. Sales may want to decide on white-label/partnership angle vs. competitive intel. No injection attempts detected."
+    },
+    {
+      "lead_id": "L-012",
+      "decision": "QUALIFY",
+      "reason": "Real company with a matching business email and website, a $9,000/month budget above the threshold, and a clear in-scope request for TikTok and YouTube growth.",
+      "confidence": 0.8,
+      "duplicate_of": "",
+      "flags": "malformed_timestamp",
+      "guardrail_overrides": "",
+      "llm_notes": "The submitted_at timestamp is malformed (2026-13-45), so the submission time is unknown. This looks like a data-capture issue rather than a lead-quality problem. Sales should check the actual receipt time in the CRM or form logs. Budget is self-reported."
+    },
+    {
+      "lead_id": "L-013",
+      "decision": "ESCALATE",
+      "reason": "Stated $20k budget conflicts with untrustworthy signals: disposable email, no website, and an unverifiable company; the request for methodology deck and client results suggests possible competitor research.",
+      "confidence": 0.6,
+      "duplicate_of": "",
+      "flags": "disposable_email;missing_website",
+      "guardrail_overrides": "",
+      "llm_notes": "Message makes a request, not an injection. Consider verifying identity via LinkedIn or company lookup before sharing materials or routing to sales."
+    },
+    {
+      "lead_id": "L-014",
+      "decision": "NURTURE",
+      "reason": "Genuine pre-seed startup with a $3000/month budget, below the $5000 threshold, and plans to scale spend after fall fundraising; suited to marketing follow-up.",
+      "confidence": 0.9,
+      "duplicate_of": "",
+      "flags": "",
+      "guardrail_overrides": "",
+      "llm_notes": "Re-engage around the fall raise or about 6 months out. Corporate email domain matches the website. No injection attempts."
+    },
+    {
+      "lead_id": "L-015",
+      "decision": "NURTURE",
+      "reason": "Repeat contact (previously a student) now claims a 4-location restaurant group needs local SEO, but budget is $2,500 (under $5,000), with no company or website to verify.",
+      "confidence": 0.7,
+      "duplicate_of": "L-002",
+      "flags": "missing_company;missing_website;repeat_contact_of_L-002",
+      "guardrail_overrides": "",
+      "llm_notes": "Repeat of L-002 (REJECT); the new ask is plausible but unverified and uses a student .edu email. Budget is below the threshold. Re-evaluate if they supply the company name and website."
+    },
+    {
+      "lead_id": "L-016",
+      "decision": "QUALIFY",
+      "reason": "Local HVAC business with a real website and company email, clear goal of more service calls, and a $6,000/month budget above the threshold; fits paid media/lead gen.",
+      "confidence": 0.88,
+      "duplicate_of": "",
+      "flags": "message_had_html_or_entities",
+      "guardrail_overrides": "",
+      "llm_notes": "HTML/entities flag was triggered, but the message contains only emojis and an ampersand, with no injected instructions. Budget raw and parsed values match."
+    },
+    {
+      "lead_id": "L-017",
+      "decision": "QUALIFY",
+      "reason": "Referral from a corporate-domain contact at a healthcare staffing platform with a $15k/month budget (normalised from '15k'), clear demand gen need, and compliance requirements that are manageable.",
+      "confidence": 0.88,
+      "duplicate_of": "",
+      "flags": "budget_normalised",
+      "guardrail_overrides": "",
+      "llm_notes": "Budget normalised from '15k' to 15000. Healthcare compliance review on ad copy and a 3-person in-house team are worth flagging for sales to prepare for."
+    },
+    {
+      "lead_id": "L-018",
+      "decision": "ESCALATE",
+      "reason": "Looks promising but the message is empty; a human confirms before sales time is spent.",
+      "confidence": 0.62,
+      "duplicate_of": "",
+      "flags": "empty_message",
+      "guardrail_overrides": "QUALIFY->ESCALATE: Looks promising but the message is empty; a human confirms before sales time is spent.",
+      "llm_notes": "Empty message, so service interest is unknown. Sales should confirm scope on first contact. Budget is self-reported."
+    },
+    {
+      "lead_id": "L-019",
+      "decision": "ESCALATE",
+      "reason": "GDPR Article 17 erasure request is a legal/privacy matter requiring human handling by the privacy team, not a sales lead; no buying intent or budget.",
+      "confidence": 0.97,
+      "duplicate_of": "",
+      "flags": "placeholder_or_test_data;missing_company;missing_website;privacy_rights_request",
+      "guardrail_overrides": "",
+      "llm_notes": "Data deletion request (German email domain, likely EU). Route to privacy/legal promptly given statutory response deadlines (~1 month). Identity verification needed. Placeholder-style email domain (example.de) may mean the address is unreliable, so confirm contact details. Do not add to marketing nurture."
+    },
+    {
+      "lead_id": "L-020",
+      "decision": "REJECT",
+      "reason": "Message is a phishing attempt: fake overdue invoice with a link to a .exe download on a non-HTTPS domain, not a genuine inquiry about marketing services.",
+      "confidence": 0.97,
+      "duplicate_of": "",
+      "flags": "phishing_or_malware_signals;website_not_https",
+      "guardrail_overrides": "",
+      "llm_notes": "Phishing/malware flags confirmed. Do not open the link or download the file. Consider reporting to security. Stated $10,000 budget is irrelevant to the decision."
+    }
+  ]
+}
