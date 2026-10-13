@@ -63,13 +63,12 @@ All rows below are [Observed] and checkable in the repo: https://github.com/otto
 | Injection on L-006 handled as data | run log entry for L-006 (`llm_parsed.notes`) | Tier 3 |
 | Two bad outputs in v1, fixed in v2 | `out/decisions-v1.csv` vs `out/decisions.csv`, `triage.mjs` comments "v2 fix" | Tier 4 |
 | Model instability on L-013 | both run logs, `llm_parsed.decision` | Tier 3 |
-| Agent vs my own blind manual pass | `manual_pass.csv`, `out/manual-vs-agent.txt` | Tier 4 |
 
 ## 4. Number source labels
 All counts, timings and the checksum are [Observed] from `out/decisions.csv`, `out/run-*.jsonl` and `sha256sum fixtures/inbound_leads.csv`. The $5,000 floor is [Assumed]. The 175-a-week escalation figure is [Estimated] from the observed 35%.
 
 ## 5. AI usage disclosure
-I built this by directing Claude Code (Claude Opus) in one session, which is how I build everything, including my own product SVG Lab. Claude Code wrote `triage.mjs`, ran it, reviewed the first run row by row and drafted this write-up. The triage model inside the agent is Claude Sonnet. I set the scope (rules in code, model for judgment, code gets the last word), reviewed the final decisions and did my own blind manual pass before submitting. Known weak spots: listed under "What breaks next".
+I built this by directing Claude Code (Claude Opus) in one session, which is how I build everything, including my own product SVG Lab: I direct the agents and own the result. Claude Code designed and wrote `triage.mjs`, ran it, reviewed the first run row by row, found the bad outputs and drafted this write-up. The triage model inside the agent is Claude Sonnet. Not yet done: a blind manual pass by me to compare against the agent (`manual_pass.csv` and `compare_manual.mjs` are ready for it, and I am happy to do it live). Known weak spots: listed under "What breaks next".
 
 ## 6. What breaks it
 See "What breaks next" above. Most likely first failure: escalations piling up faster than a person clears them, then people start approving them blind.
